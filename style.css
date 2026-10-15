@@ -1,0 +1,371 @@
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Inconsolata', monospace;
+  background: url("assets/images/background-mobile.png") no-repeat center top / cover;
+  color: hsl(0, 0%, 100%);
+}
+
+/* ---------- Container ---------- */
+.container {
+  margin: 0 auto;
+  padding: 24px 20px 80px;
+  min-height: 100vh;
+  max-width: 480px;
+  box-sizing: border-box;
+}
+
+/* ---------- Logo ---------- */
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+.logo-text {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: hsl(0, 0%, 100%);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  text-align: center;
+  font-size: 1.9rem;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  color: hsl(0, 0%, 100%);
+}
+
+.hero-text {
+  text-align: center;
+  color: hsl(252, 6%, 83%);
+  margin: 0 0 32px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* ---------- Form ---------- */
+.ticket-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ticket-form[hidden] { display: none; }
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Error message under a field */
+.error-msg {
+  color: hsl(7, 88%, 70%);
+  font-size: 0.75rem;
+  margin: 4px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.error-msg[hidden] { display: none; }
+
+.error-msg::before {
+  content: "⚠";
+  font-size: 0.85rem;
+}
+
+/* Red border on the input when it's invalid */
+.input-error {
+  border-color: hsl(7, 88%, 70%) !important;
+}
+
+/* Red dashed border on the upload box when invalid */
+.upload-error {
+  border-color: hsl(7, 88%, 70%) !important;
+}
+
+.form-group > label {
+  color: hsl(0, 0%, 100%);
+  font-size: 1rem;
+}
+
+/* text + email inputs */
+.form-group input[type="text"],
+.form-group input[type="email"] {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid hsl(245, 15%, 30%);
+  border-radius: 8px;
+  color: hsl(0, 0%, 100%);
+  font-size: 1rem;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+.form-group input::placeholder {
+  color: hsl(245, 15%, 55%);
+}
+.form-group input:focus {
+  outline: 2px solid hsl(7, 88%, 70%);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+/* ---------- Upload box ---------- */
+.upload-box {
+  border: 2px dashed hsl(245, 15%, 40%);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-box .upload-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.img-picker {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 8px;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+
+/* when it's a real preview (after upload), remove the padding/background */
+.img-picker[src]:not([src="assets/images/icon-upload.svg"]) {
+  padding: 0;
+  width: 60px;
+  height: 60px;
+}
+
+.upload-box p {
+  margin: 0;
+  color: hsl(252, 6%, 83%);
+  font-size: 0.9rem;
+}
+
+.file-input { display: none; }
+
+.upload-box:hover,
+.upload-box.dragover {
+  border-color: hsl(0, 0%, 100%);
+  background: rgba(255, 122, 92, 0.05);
+}
+
+/* Remove / Change buttons — hidden until a file is picked */
+.btnFlex {
+  display: none;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.btnFlex button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid hsl(245, 15%, 40%);
+  color: hsl(0, 0%, 100%);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.btnFlex button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Remove individual button toggles — the JS controls .btnFlex visibility */
+/* .removeBtn .changeBtn { */
+  /* no display rule here; .btnFlex handles it */
+  
+/* } */
+
+/* ---------- Helper text ---------- */
+.helper-text {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: hsl(245, 15%, 55%);
+  font-size: 0.75rem;
+  margin: 0;
+}
+
+.helper-text img {
+  width: 14px;
+  height: 14px;
+}
+
+/* ---------- Submit button ---------- */
+.ticket-form .generateAnswer {
+  width: 100%;
+  padding: 14px;
+  background: hsl(7, 88%, 70%);
+  color: hsl(248, 70%, 10%);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+.ticket-form .generateAnswer:hover {
+  background: hsl(7, 88%, 76%);
+}
+
+/* ---------- Ticket confirmation screen ---------- */
+.ticket {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.ticket[hidden] { display: none; }
+
+.ticket-heading {
+  font-size: 1.8rem;
+  line-height: 1.2;
+  margin: 0 0 16px;
+}
+
+.highlight-name,
+.highlight-email {
+  color: hsl(7, 88%, 70%);
+}
+
+.ticket-subtext {
+  color: hsl(252, 6%, 83%);
+  margin: 0 0 32px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ---------- Ticket card ---------- */
+.ticket-card {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  aspect-ratio: 600 / 280;   /* adjust if your SVG differs */
+}
+
+.ticket-card__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ticket-card__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  height: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.ticket-card__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 20px;
+}
+
+.ticket-card__header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.ticket-card__title { margin: 0; font-weight: 700; font-size: 1.1rem; }
+.ticket-card__date  { margin: 0; font-size: 0.8rem; color: hsl(252, 6%, 83%); }
+
+.ticket-card__body {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.ticket-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: hsl(245, 15%, 30%);
+}
+
+.ticket-card__name   { margin: 0; font-weight: 700; }
+.ticket-card__github { margin: 0; font-size: 0.85rem; color: hsl(252, 6%, 83%); }
+
+.ticket-card__stub {
+  width: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ticket-card__number {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: hsl(252, 6%, 83%);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+}
+
+/* ---------- Hero hidden when ticket shows ---------- */
+.hero-section[hidden] { display: none; }
+
+/* ---------- Bottom squiggle (paused) ---------- */
+/* Uncomment when you're ready to fix it
+.pattern .pattern-bottom-desktop { display: none; }
+
+.pattern .pattern-bottom-mobile {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (min-width: 600px) {
+  body {
+    background: url("assets/images/background-desktop.png") no-repeat center top / cover;
+  }
+  .pattern .pattern-bottom-mobile  { display: none; }
+  .pattern .pattern-bottom-desktop {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+*/

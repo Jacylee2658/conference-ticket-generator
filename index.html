@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>conference Ticket Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+
+    <!-- Logo -->
+    <header class="logo">
+      <img src="assets/images/logo-mark.svg" alt="Coding Conf logo">
+      <span class="logo-text">Coding Conf</span>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero-section">
+      <h1 class="hero">Your Journey to Coding Conf 2025 Starts Here!</h1>
+      <p class="hero-text">Secure your spot at next year's biggest coding conference.</p>
+    </section>
+
+    <!-- Form -->
+    <form class="ticket-form" novalidate>
+
+      <!-- Avatar upload -->
+      <div class="form-group">
+        <label for="avatar">Upload Avatar</label>
+
+        <div class="upload-box" id="dropZone">
+          <label for="avatar" class="upload-inner">
+            <img src="assets/images/icon-upload.svg" alt="" class="img-picker">
+            <p class="dropText">Drag and drop or click to upload</p>
+            <input
+              type="file"
+              id="avatar"
+              name="avatar"
+              accept="image/png, image/jpeg"
+              class="file-input"
+            >
+          </label>
+
+          <div class="btnFlex">
+            <button type="button" class="removeBtn">Remove image</button>
+            <button type="button" class="changeBtn">Change image</button>
+          </div>
+        </div>
+
+        <p class="helper-text">
+          <img src="assets/images/icon-info.svg" alt="">
+          Upload your photo (JPG or PNG, max size: 500KB).
+        </p>
+        <p class="error-msg" id="avatarError" hidden></p>
+      </div>
+
+      <!-- Full name -->
+      <div class="form-group">
+        <label for="fullname">Full Name</label>
+        <input
+          type="text"
+          id="fullname"
+          name="fullname"
+          placeholder="Your full name"
+          required
+        >
+        <p class="error-msg" id="fullnameError" hidden></p>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="example@email.com"
+          required
+        >
+        <p class="error-msg" id="emailError" hidden></p>
+      </div>
+
+      <!-- GitHub -->
+      <div class="form-group">
+        <label for="github">GitHub Username</label>
+        <input
+          type="text"
+          id="github"
+          name="github"
+          placeholder="@yourusername"
+          required
+          onchange="confirmGitHubUsername(event.target.value.slice(1, event.target.value.length));"
+        >
+        <p class="error-msg" id="githubError" hidden></p>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="generateAnswer">Generate My Ticket</button>
+    </form>
+
+    <!-- Ticket confirmation (hidden by default) -->
+    <section class="ticket" id="ticket" hidden>
+
+      <h1 class="ticket-heading">
+        Congrats, <span class="highlight-name" id="ticketName">Jonatan</span>!
+        Your ticket is ready.
+      </h1>
+
+      <p class="ticket-subtext">
+        We've emailed your ticket to
+        <span class="highlight-email" id="ticketEmail">you@email.com</span>
+        and will send updates in the run up to the event.
+      </p>
+
+      <div class="ticket-card">
+        <!-- Background shape -->
+        <img
+          src="assets/images/pattern-ticket.svg"
+          alt=""
+          class="ticket-card__bg"
+        >
+
+        <!-- Content overlaid on top -->
+        <div class="ticket-card__content">
+
+          <!-- Left side -->
+          <div class="ticket-card__main">
+            <div class="ticket-card__header">
+              <img src="assets/images/logo-mark.svg" alt="">
+              <div>
+                <p class="ticket-card__title">Coding Conf</p>
+                <p class="ticket-card__date">Jan 31, 2025 / Austin, TX</p>
+              </div>
+            </div>
+
+            <div class="ticket-card__body">
+              <img id="ticketAvatar" class="ticket-card__avatar" src="" alt="">
+              <div>
+                <p class="ticket-card__name" id="ticketCardName">Jonatan Kristof</p>
+                <p class="ticket-card__github" id="ticketGithub">@jonatankristof0101</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right stub -->
+          <div class="ticket-card__stub">
+            <span class="ticket-card__number" id="ticketNumber">#01609</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    
+    <!-- Bottom squiggle -->
+    <!-- <div class="pattern">
+      <img
+        src="./assets/images/pattern-squiggly-line-bottom-desktop.svg"
+        alt=""
+        class="pattern-bottom-desktop"
+      >
+      <img
+        src="./assets/images/pattern-squiggly-line-bottom-mobile-tablet.svg"
+        alt=""
+        class="pattern-bottom-mobile"
+      >
+    </div> -->
+
+  </main>
+
+  <script src="script.js"></script>
+
+  <footer></footer>
+</body>
+</html>
