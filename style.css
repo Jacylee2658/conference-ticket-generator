@@ -43,6 +43,7 @@ body {
   color: hsl(0, 0%, 100%);
 }
 
+/* hero text style */
 .hero-text {
   text-align: center;
   color: hsl(252, 6%, 83%);
